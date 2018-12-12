@@ -1,5 +1,5 @@
 from MSTUPModels.MeasureOfCentralTendencies import Mean, Median, Mode
-from MSTUPModels.MeasureOfDispersions import Variance
+from MSTUPModels.MeasureOfDispersions import Variance, StandardDeviation
 
 inputData = [1, 1, 2, 3, 3, 3, 3, 4]
 
@@ -15,3 +15,6 @@ print('Mode =',modeObject.calculateMode(inputData))
 print()
 varianceObject = Variance.Variance()
 print('Variance =',varianceObject.calculateVariance(inputData))
+print()
+standardDeviationObject = StandardDeviation.StandardDeviation()
+print('Standard Deviation =',standardDeviationObject.calculateStandardDeviation(inputData))
