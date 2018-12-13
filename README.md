@@ -8,11 +8,11 @@ Statistical technique finds applications in businesses of all kind. Originally s
 
 Experiment with Python programming language to translate statistical techniques into logic. Developing proficiency in statistical techniques which can be applied to real time business processes and even research & analysis. To develop competency in GUI programming and GUI design. Documenting collaborative project work by a team consisting of two members and documenting their experiences in resolving deadlocks and complexities in carrying out the project at hand. Techniques to be addressed: -
 
-● Technique for forecasting events based on the collection of previous experiences.
-● Measures of central tendencies and measures of dispersions.
-● Hypothesis analysis
-● Regression analysis
-● ANOVA
+    1) Technique for forecasting events based on the collection of previous experiences.
+    2) Measures of central tendencies and measures of dispersions.
+    3) Hypothesis analysis
+    4) Regression analysis
+    5) ANOVA
 
 3. Methodology -
 
