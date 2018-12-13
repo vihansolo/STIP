@@ -1,5 +1,5 @@
-from MSTUPModels.MeasureOfCentralTendencies import Mean, Median, Mode
-from MSTUPModels.MeasureOfDispersions import Variance, StandardDeviation
+from STIPModels.MeasureOfCentralTendencies import Mean, Median, Mode
+from STIPModels.MeasureOfDispersions import Variance, StandardDeviation
 
 inputData = [1, 1, 2, 3, 3, 3, 3, 4]
 
