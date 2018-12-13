@@ -1,5 +1,4 @@
 from statistics import stdev
-import math
 
 class StandardDeviation() :
 
