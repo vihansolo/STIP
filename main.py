@@ -3,8 +3,7 @@ from STIPModels.MeasureOfDispersions import Variance, StandardDeviation, Interqu
 from STIPModels.RegressionAnalysis import LinearRegression
 
 inputData = [7, 7, 31, 31, 47, 75, 87, 115, 116, 119, 119, 155, 177]
-x_array =  [1, 2, 3, 4, 5, 6]
-y_array = [5, 4, 6, 5, 6, 7]
+input2DData = [(1,5), (2,4), (3,6), (4,5), (5,6), (6,7)]
 
 # Measure of Central Tendencies
 
@@ -51,4 +50,4 @@ print('Interquartile Range =',InterquartileRange.InterquartileRange().calculateI
 
 print()
 print('Linear Regression : ')
-LinearRegression.LinearRegression().calculateLinearRegression(x_array,y_array)
+LinearRegression.LinearRegression().calculateLinearRegression(input2DData)

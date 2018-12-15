@@ -5,10 +5,10 @@ class LinearRegression() :
     def __init__(self) :
         pass
 
-    def calculateLinearRegression(self, x_array = [], y_array = []) :
+    def calculateLinearRegression(self, input2DData = []) :
 
-        x_array = np.array(x_array)
-        y_array = np.array(y_array)
+        x_array = np.array([x for x, y in input2DData])
+        y_array = np.array([y for x, y in input2DData])
 
         def best_fit_slope_intercept (x, y) :
             m = (((np.mean(x_array) * np.mean(y_array)) - np.mean(x_array * y_array)) / ((np.mean(x_array) ** 2) - np.mean(x_array ** 2)))
