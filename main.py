@@ -1,6 +1,6 @@
 from STIPModels.MeasureOfCentralTendencies import Mean, Median, Mode
 from STIPModels.MeasureOfDispersions import Variance, StandardDeviation, InterquartileRange
-from STIPModels.RegressionAnalysis import LinearRegression
+from STIPModels.RegressionAnalysis import LinearRegression, NonLinearRegression
 from STIPModels.Forecasting import Forecasting
 
 inputData = [7, 7, 31, 31, 47, 75, 87, 115, 116, 119, 119, 155, 177]
@@ -52,6 +52,13 @@ print('Interquartile Range =',InterquartileRange.InterquartileRange().calculateI
 print()
 print('Linear Regression : ')
 LinearRegression.LinearRegression().calculateLinearRegression(input2DData)
+
+# NonLinear Regression
+
+print()
+print('Non Linear Regression : ')
+print()
+NonLinearRegression.NonLinearRegression().calculateNonLinearRegression()
 
 # Forecasting
 
