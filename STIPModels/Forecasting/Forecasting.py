@@ -11,7 +11,7 @@ class Forecasting() :
 
     def calculateForecasting(self) :
 
-        def prepare_data(df,forecast_col,forecast_out,test_size):
+        def prepare_data(df,forecast_col,forecast_out,test_size) :
 
             label = df[forecast_col].shift(-forecast_out)
 
