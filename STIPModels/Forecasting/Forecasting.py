@@ -44,5 +44,5 @@ class Forecasting() :
 
         forecast = learner.predict(X_lately)
 
-        print('Test Score :',score)
-        print('Forecast Set : ',forecast)
+        print('\tTest Score :',score)
+        print('\tForecast Set : ',forecast)

@@ -52,7 +52,6 @@ class NonLinearRegression() :
 
         forecast_set = clf.predict(x_lately)
 
-        print()
         print('Forecast Set :\n',forecast_set,'\n\n','Accuracy :',accuracy,'\n','Forecast Out :',forecast_out)
 
         df['Forecast'] = np.nan
