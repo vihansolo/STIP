@@ -3,9 +3,11 @@ from STIPModels.MeasureOfDispersions import Variance, StandardDeviation, Interqu
 from STIPModels.RegressionAnalysis import LinearRegression, NonLinearRegression
 from STIPModels.Forecasting import Forecasting
 from STIPModels.HypothesisAnalysis import StudentTTest, PairedTTest, Anova, ChiSquared, PearsonCoeff
+import numpy as np
 
 inputData = [7, 7, 31, 31, 47, 75, 87, 115, 116, 119, 119, 155, 177]
 input2DData = [(1,5), (2,4), (3,6), (4,5), (5,6), (6,7)]
+chiData = np.array([[1,3,4],[2,4,5],[5,3,4],[8,5,1]])
 
 # Measure of Central Tendencies
 
@@ -90,6 +92,13 @@ print()
 print('Analysis Of Variance (ANOVA) : ')
 print()
 Anova.Anova().calculateANOVA(input2DData)
+
+# Chi Squared
+
+print()
+print('Chi Squared Test : ')
+print()
+ChiSquared.ChiSquared().calculateChiSquared(chiData)
 
 # Pearson's Correlation Coefficient
 
