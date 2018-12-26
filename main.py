@@ -9,100 +9,170 @@ inputData = [7, 7, 31, 31, 47, 75, 87, 115, 116, 119, 119, 155, 177]
 input2DData = [(1,5), (2,4), (3,6), (4,5), (5,6), (6,7)]
 chiData = np.array([[1,3,4],[2,4,5],[5,3,4],[8,5,1]])
 
-# Measure of Central Tendencies
-
-# Mean
-
 print()
-print('Mean =',Mean.Mean().calculateMean(inputData))
-
-# Median
-
+print('Enter Choice :')
 print()
-print('Median =',Median.Median().calculateMedian(inputData))
-
-# Mode
-
+print('1. Measure of Central Tendencies')
+print('2. Measure Of Dispersions')
+print('3. Regression Analysis')
+print('4. Forecasting')
+print('5. Hypothesis Analysis')
 print()
 
-try :
-    print('Mode =',Mode.Mode().calculateMode(inputData))
-
-except :
-    print('Multiple Modes found')
-
-# Measure of Dispersion
-
-# Variance
-
+choice = int(input('Enter Choice : '))
 print()
-print('Variance =',Variance.Variance().calculateVariance(inputData))
 
-# Standard Deviation
+if choice == 1 :
 
-print()
-print('Standard Deviation =',StandardDeviation.StandardDeviation().calculateStandardDeviation(inputData))
+    # Measure of Central Tendencies
 
-# Interquartile Range
+    print('Enter choice : ')
+    print()
+    print('1. Mean')
+    print('2. Median')
+    print('3. Mode')
+    print()
 
-print()
-print('Interquartile Range =',InterquartileRange.InterquartileRange().calculateInterquartileRange(inputData))
+    choice = int(input('Enter Choice : '))
+    print()
 
-# Regression Analysis
+    if choice == 1 :
 
-# Linear Regression
+        # Mean
+        print('Mean =',Mean.Mean().calculateMean(inputData))
 
-print()
-print('Linear Regression : ')
-LinearRegression.LinearRegression().calculateLinearRegression(input2DData)
+    if choice == 2 :
 
-# NonLinear Regression
+        # Median
+        print('Median =',Median.Median().calculateMedian(inputData))
 
-print()
-print('Non Linear Regression : ')
-print()
-NonLinearRegression.NonLinearRegression().calculateNonLinearRegression()
+    if choice == 3 :
 
-# Forecasting
+        # Mode
+        try :
+            print('Mode =',Mode.Mode().calculateMode(inputData))
 
-print()
-print('Forecasting :')
-print()
-Forecasting.Forecasting().calculateForecasting()
+        except :
+            print('Multiple Modes found')
 
-# Hypothesis Analysis
+if choice == 2 :
 
-# Student T-Test
+    # Measure of Dispersion
 
-print()
-print('Student T-Test : ')
-print()
-StudentTTest.StudentTTest().calculateStudentTTest(input2DData)
+    print('Enter choice : ')
+    print()
+    print('1. Variance')
+    print('2. Standard Deviation')
+    print('3. Interquartile Range')
+    print()
 
-# Paired T-Test
+    choice = int(input('Enter Choice : '))
+    print()
 
-print()
-print('Paired T-Test : ')
-print()
-PairedTTest.PairedTTest().calculatePairedTTest(input2DData)
+    if choice == 1 :
 
-# ANOVA
+        # Variance
+        print('Variance =',Variance.Variance().calculateVariance(inputData))
 
-print()
-print('Analysis Of Variance (ANOVA) : ')
-print()
-Anova.Anova().calculateANOVA(input2DData)
+    if choice == 2 :
 
-# Chi Squared
+        # Standard Deviation
+        print('Standard Deviation =',StandardDeviation.StandardDeviation().calculateStandardDeviation(inputData))
 
-print()
-print('Chi Squared Test : ')
-print()
-ChiSquared.ChiSquared().calculateChiSquared(chiData)
+    if choice == 3 :
 
-# Pearson's Correlation Coefficient
+        # Interquartile Range
+        print('Interquartile Range =',InterquartileRange.InterquartileRange().calculateInterquartileRange(inputData))
 
-print()
-print('Pearson\'s Correlation Coefficient : ')
-print()
-PearsonCoeff.PearsonCoeff().calculateCorrelationCoefficient(input2DData)
+if choice == 3 :
+
+    # Regression Analysis
+
+    print('Enter choice : ')
+    print()
+    print('1. Linear Regression')
+    print('2. Non-Linear Regression')
+    print()
+
+    choice = int(input('Enter Choice : '))
+    print()
+
+    if choice == 1 :
+
+        # Linear Regression
+
+        print('Linear Regression : ')
+        print()
+        LinearRegression.LinearRegression().calculateLinearRegression(input2DData)
+
+    if choice == 2 :
+
+        # NonLinear Regression
+
+        print('Non Linear Regression : ')
+        print()
+        NonLinearRegression.NonLinearRegression().calculateNonLinearRegression()
+
+if choice == 4 :
+
+    # Forecasting
+
+    print('Forecasting :')
+    print()
+    Forecasting.Forecasting().calculateForecasting()
+
+if choice == 5 :
+
+    # Hypothesis Analysis
+
+    print('Enter choice : ')
+    print()
+    print('1. Student T-Test')
+    print('2. Paired T-Test')
+    print('3. ANOVA')
+    print('4. Chi Squared Test')
+    print('5. Pearson\'s Correlation Coefficient')
+    print()
+
+    choice = int(input('Enter Choice : '))
+    print()
+
+    if choice == 1 :
+
+        # Student T-Test
+
+        print('Student T-Test : ')
+        print()
+        StudentTTest.StudentTTest().calculateStudentTTest(input2DData)
+
+    if choice == 2 :
+
+        # Paired T-Test
+
+        print('Paired T-Test : ')
+        print()
+        PairedTTest.PairedTTest().calculatePairedTTest(input2DData)
+
+    if choice == 3 :
+
+        # ANOVA
+
+        print('Analysis Of Variance (ANOVA) : ')
+        print()
+        Anova.Anova().calculateANOVA(input2DData)
+
+    if choice == 4 :
+
+        # Chi Squared
+
+        print('Chi Squared Test : ')
+        print()
+        ChiSquared.ChiSquared().calculateChiSquared(chiData)
+
+    if choice == 5 :
+
+        # Pearson's Correlation Coefficient
+
+        print('Pearson\'s Correlation Coefficient : ')
+        print()
+        PearsonCoeff.PearsonCoeff().calculateCorrelationCoefficient(input2DData)
