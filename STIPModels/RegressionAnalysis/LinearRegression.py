@@ -21,4 +21,4 @@ class LinearRegression() :
         predict_x = 8
         predict_y = (m * predict_x) + b
 
-        print('\tProbable point = (',predict_x,',',predict_y,')')
+        print('Probable point = (',predict_x,',',predict_y,')')

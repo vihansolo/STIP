@@ -12,5 +12,5 @@ class Anova() :
 
         stat, p = f_oneway(x, y)
 
-        print('\tStat :',stat)
-        print('\tP :',p)
+        print('Stat :',stat)
+        print('P :',p)

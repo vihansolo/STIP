@@ -12,5 +12,5 @@ class PairedTTest() :
 
         stat, p = ttest_rel(x, y)
 
-        print('\tStat :',stat)
-        print('\tP :',p)
+        print('Stat :',stat)
+        print('P :',p)

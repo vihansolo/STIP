@@ -12,5 +12,5 @@ class PearsonCoeff() :
 
         corr, p = pearsonr(x, y)
 
-        print('\tCorr :',corr)
-        print('\tP :',p)
+        print('Corr :',corr)
+        print('P :',p)
