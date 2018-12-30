@@ -55,6 +55,8 @@ if choice == 1 :
         except :
             print('Multiple Modes found')
 
+    exit()
+
 if choice == 2 :
 
     # Measure of Dispersion
@@ -83,6 +85,8 @@ if choice == 2 :
 
         # Interquartile Range
         print('Interquartile Range =',InterquartileRange.InterquartileRange().calculateInterquartileRange(inputData))
+
+    exit()
 
 if choice == 3 :
 
@@ -113,6 +117,8 @@ if choice == 3 :
         print()
         NonLinearRegression.NonLinearRegression().calculateNonLinearRegression()
 
+    exit()
+
 if choice == 4 :
 
     # Forecasting
@@ -120,6 +126,7 @@ if choice == 4 :
     print('Forecasting :')
     print()
     Forecasting.Forecasting().calculateForecasting()
+    exit()
 
 if choice == 5 :
 
@@ -176,3 +183,5 @@ if choice == 5 :
         print('Pearson\'s Correlation Coefficient : ')
         print()
         PearsonCoeff.PearsonCoeff().calculateCorrelationCoefficient(input2DData)
+
+    exit()
