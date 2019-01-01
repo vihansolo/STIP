@@ -10,8 +10,6 @@ input2DData = [(1,5), (2,4), (3,6), (4,5), (5,6), (6,7)]
 chiData = np.array([[1,3,4],[2,4,5],[5,3,4],[8,5,1]])
 
 print()
-print('Enter Choice :')
-print()
 print('1. Measure of Central Tendencies')
 print('2. Measure Of Dispersions')
 print('3. Regression Analysis')
@@ -26,7 +24,6 @@ if choice == 1 :
 
     # Measure of Central Tendencies
 
-    print('Enter choice : ')
     print()
     print('1. Mean')
     print('2. Median')
@@ -61,7 +58,6 @@ if choice == 2 :
 
     # Measure of Dispersion
 
-    print('Enter choice : ')
     print()
     print('1. Variance')
     print('2. Standard Deviation')
@@ -92,7 +88,6 @@ if choice == 3 :
 
     # Regression Analysis
 
-    print('Enter choice : ')
     print()
     print('1. Linear Regression')
     print('2. Non-Linear Regression')
@@ -132,7 +127,6 @@ if choice == 5 :
 
     # Hypothesis Analysis
 
-    print('Enter choice : ')
     print()
     print('1. Student T-Test')
     print('2. Paired T-Test')
