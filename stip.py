@@ -62,6 +62,7 @@ tk.Button(StartFrame, text = "1. Measure Of Central Tendencies", command = lambd
 
 tk.Label(measureOfCentralTendenciesFrame, text = "Measure Of Central Tendencies", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
 
+tk.Button(measureOfCentralTendenciesFrame, text = "<---", command = lambda:raiseFrame(StartFrame)).pack(side = tk.BOTTOM)
 
 # Mean
 
@@ -95,6 +96,7 @@ tk.Button(StartFrame, text = "2. Measure Of Dispersions", command = lambda:raise
 
 tk.Label(measureOfDispersionsFrame, text = "Measure Of Dispersions", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
 
+tk.Button(measureOfDispersionsFrame, text = "<---", command = lambda:raiseFrame(StartFrame)).pack(side = tk.BOTTOM)
 
 # Variance
 
@@ -128,6 +130,7 @@ tk.Button(StartFrame, text = "3. Regression Analysis", command = lambda:raiseFra
 
 tk.Label(regressionAnalysisFrame, text = "Regression Analysis", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
 
+tk.Button(regressionAnalysisFrame, text = "<---", command = lambda:raiseFrame(StartFrame)).pack(side = tk.BOTTOM)
 
 # Linear Regression
 
@@ -161,6 +164,7 @@ tk.Button(StartFrame, text = "5. Hypothesis Analysis", command = lambda:raiseFra
 
 tk.Label(hypothesisAnalysisFrame, text = "Hypothesis Analysis", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
 
+tk.Button(hypothesisAnalysisFrame, text = "<---", command = lambda:raiseFrame(StartFrame)).pack(side = tk.BOTTOM)
 
 # Student T-Test
 
