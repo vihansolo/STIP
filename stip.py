@@ -7,6 +7,7 @@ master = tk.Tk()
 
 master.title("STIP")
 master.geometry("1920x1080")
+master.state('zoomed')
 
 StartFrame = tk.Frame(master)
 
