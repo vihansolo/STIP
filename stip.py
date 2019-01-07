@@ -1,7 +1,12 @@
 import tkinter as tk
+from STIPModels.MeasureOfCentralTendencies import Mean
 
 def raiseFrame(frame) :
     frame.tkraise()
+
+def generateMean() :
+    output = "Mean   :   " + str(Mean.Mean().calculateMean([int(i) for i in enterArrayToCompute.get().split(', ')]))
+    tk.Label(meanFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 73, pady = 130, side = tk.TOP, anchor = "nw")
 
 master = tk.Tk()
 
@@ -52,7 +57,7 @@ for frame in (StartFrame,
                 hypothesisAnalysisFrame, studentTTestFrame, pairedTTestFrame, anovaFrame, chiSquaredTestFrame, pearsonCoeffFrame) :
     frame.grid(row = 0, column = 0, sticky = "nsew", padx = 350)
 
-tk.Label(StartFrame, text = "Statistical Techniques Using Python", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(StartFrame, text = "Statistical Techniques Using Python", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 
@@ -61,7 +66,7 @@ tk.Label(StartFrame, text = "Statistical Techniques Using Python", font = ("Gill
 tk.Button(StartFrame, text = "1. Measure Of Central Tendencies", command = lambda:raiseFrame(measureOfCentralTendenciesFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(measureOfCentralTendenciesFrame, text = "Measure Of Central Tendencies", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(measureOfCentralTendenciesFrame, text = "Measure Of Central Tendencies", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 tk.Button(measureOfCentralTendenciesFrame, text = "<---", command = lambda:raiseFrame(StartFrame)).pack(side = tk.BOTTOM)
 
@@ -70,15 +75,21 @@ tk.Button(measureOfCentralTendenciesFrame, text = "<---", command = lambda:raise
 tk.Button(measureOfCentralTendenciesFrame, text = "1. Mean", command = lambda:raiseFrame(meanFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(meanFrame, text = "Mean", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(meanFrame, text = "Mean", font = ("Gill Sans MT", 40)).pack(pady = 100, side = tk.TOP)
 
+tk.Label(meanFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+
+enterArrayToCompute = tk.Entry(meanFrame, font = 14, width = 50)
+enterArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
+
+tk.Button(meanFrame, text = "Calculate Mean", command = lambda:generateMean()).pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
 # Median
 
 tk.Button(measureOfCentralTendenciesFrame, text = "2. Median", command = lambda:raiseFrame(medianFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(medianFrame, text = "Median", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(medianFrame, text = "Median", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 # Mode
@@ -86,7 +97,7 @@ tk.Label(medianFrame, text = "Median", font = ("Gill Sans MT",40)).pack(pady = 8
 tk.Button(measureOfCentralTendenciesFrame, text = "3. Mode", command = lambda:raiseFrame(modeFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(modeFrame, text = "Mode", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(modeFrame, text = "Mode", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 
@@ -95,7 +106,7 @@ tk.Label(modeFrame, text = "Mode", font = ("Gill Sans MT",40)).pack(pady = 80, s
 tk.Button(StartFrame, text = "2. Measure Of Dispersions", command = lambda:raiseFrame(measureOfDispersionsFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(measureOfDispersionsFrame, text = "Measure Of Dispersions", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(measureOfDispersionsFrame, text = "Measure Of Dispersions", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 tk.Button(measureOfDispersionsFrame, text = "<---", command = lambda:raiseFrame(StartFrame)).pack(side = tk.BOTTOM)
 
@@ -104,7 +115,7 @@ tk.Button(measureOfDispersionsFrame, text = "<---", command = lambda:raiseFrame(
 tk.Button(measureOfDispersionsFrame, text = "1. Variance", command = lambda:raiseFrame(varianceFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(varianceFrame, text = "Variance", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(varianceFrame, text = "Variance", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 # Standard Deviation
@@ -112,7 +123,7 @@ tk.Label(varianceFrame, text = "Variance", font = ("Gill Sans MT",40)).pack(pady
 tk.Button(measureOfDispersionsFrame, text = "2. Standard Deviation", command = lambda:raiseFrame(standardDeviationFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(standardDeviationFrame, text = "Standard Deviation", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(standardDeviationFrame, text = "Standard Deviation", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 # Interquartile Range
@@ -120,7 +131,7 @@ tk.Label(standardDeviationFrame, text = "Standard Deviation", font = ("Gill Sans
 tk.Button(measureOfDispersionsFrame, text = "3. Interquartile Range", command = lambda:raiseFrame(interquartileRangeFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(interquartileRangeFrame, text = "Interquartile Range", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(interquartileRangeFrame, text = "Interquartile Range", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 
@@ -129,7 +140,7 @@ tk.Label(interquartileRangeFrame, text = "Interquartile Range", font = ("Gill Sa
 tk.Button(StartFrame, text = "3. Regression Analysis", command = lambda:raiseFrame(regressionAnalysisFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(regressionAnalysisFrame, text = "Regression Analysis", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(regressionAnalysisFrame, text = "Regression Analysis", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 tk.Button(regressionAnalysisFrame, text = "<---", command = lambda:raiseFrame(StartFrame)).pack(side = tk.BOTTOM)
 
@@ -138,7 +149,7 @@ tk.Button(regressionAnalysisFrame, text = "<---", command = lambda:raiseFrame(St
 tk.Button(regressionAnalysisFrame, text = "1. Linear Regression", command = lambda:raiseFrame(linearRegressionFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(linearRegressionFrame, text = "Linear Regression", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(linearRegressionFrame, text = "Linear Regression", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 # Non-Linear Regression
@@ -146,7 +157,7 @@ tk.Label(linearRegressionFrame, text = "Linear Regression", font = ("Gill Sans M
 tk.Button(regressionAnalysisFrame, text = "2. Non-Linear Regression", command = lambda:raiseFrame(nonLinearRegressionFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(nonLinearRegressionFrame, text = "Non-Linear Regression", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(nonLinearRegressionFrame, text = "Non-Linear Regression", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 # Forecasting
@@ -154,7 +165,7 @@ tk.Label(nonLinearRegressionFrame, text = "Non-Linear Regression", font = ("Gill
 tk.Button(StartFrame, text = "4. Forecasting", command = lambda:raiseFrame(forecastingFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(forecastingFrame, text = "Forecasting", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(forecastingFrame, text = "Forecasting", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 
@@ -163,7 +174,7 @@ tk.Label(forecastingFrame, text = "Forecasting", font = ("Gill Sans MT",40)).pac
 tk.Button(StartFrame, text = "5. Hypothesis Analysis", command = lambda:raiseFrame(hypothesisAnalysisFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(hypothesisAnalysisFrame, text = "Hypothesis Analysis", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(hypothesisAnalysisFrame, text = "Hypothesis Analysis", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 tk.Button(hypothesisAnalysisFrame, text = "<---", command = lambda:raiseFrame(StartFrame)).pack(side = tk.BOTTOM)
 
@@ -172,7 +183,7 @@ tk.Button(hypothesisAnalysisFrame, text = "<---", command = lambda:raiseFrame(St
 tk.Button(hypothesisAnalysisFrame, text = "1. Student T-Test", command = lambda:raiseFrame(studentTTestFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(studentTTestFrame, text = "Student T-Test", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(studentTTestFrame, text = "Student T-Test", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 # Paired T-Test
@@ -180,7 +191,7 @@ tk.Label(studentTTestFrame, text = "Student T-Test", font = ("Gill Sans MT",40))
 tk.Button(hypothesisAnalysisFrame, text = "2. Paired T-Test", command = lambda:raiseFrame(pairedTTestFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(pairedTTestFrame, text = "Paired T-Test", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(pairedTTestFrame, text = "Paired T-Test", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 # ANOVA
@@ -188,7 +199,7 @@ tk.Label(pairedTTestFrame, text = "Paired T-Test", font = ("Gill Sans MT",40)).p
 tk.Button(hypothesisAnalysisFrame, text = "3. ANOVA", command = lambda:raiseFrame(anovaFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(anovaFrame, text = "ANOVA", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(anovaFrame, text = "ANOVA", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 # Chi Squared Test
@@ -196,7 +207,7 @@ tk.Label(anovaFrame, text = "ANOVA", font = ("Gill Sans MT",40)).pack(pady = 80,
 tk.Button(hypothesisAnalysisFrame, text = "4. Chi Squared Test", command = lambda:raiseFrame(chiSquaredTestFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(chiSquaredTestFrame, text = "Chi Squared Test", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(chiSquaredTestFrame, text = "Chi Squared Test", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 # Pearson's Correlation Coefficient
@@ -204,7 +215,7 @@ tk.Label(chiSquaredTestFrame, text = "Chi Squared Test", font = ("Gill Sans MT",
 tk.Button(hypothesisAnalysisFrame, text = "5. Pearson\'s Correlation Coefficient ", command = lambda:raiseFrame(pearsonCoeffFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(pearsonCoeffFrame, text = "Person\'s Correlation Coefficient", font = ("Gill Sans MT",40)).pack(pady = 80, side = tk.TOP)
+tk.Label(pearsonCoeffFrame, text = "Person\'s Correlation Coefficient", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 raiseFrame(StartFrame)
