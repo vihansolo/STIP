@@ -1,5 +1,6 @@
 import tkinter as tk
 from STIPModels.MeasureOfCentralTendencies import Mean, Median, Mode
+from STIPModels.MeasureOfDispersions import Variance
 
 def raiseFrame(frame) :
     frame.tkraise()
@@ -22,6 +23,11 @@ def generateMode() :
 
     tk.Label(modeFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 65, pady = 130, side = tk.TOP, anchor = "nw")
     calculateModeButton.config(state = "disabled")
+
+def generateVariance() :
+    output = "Variance   :   " + str(Variance.Variance().calculateVariance([int(i) for i in enterVarianceArrayToCompute.get().split(', ')]))
+    tk.Label(varianceFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 65, pady = 130, side = tk.TOP, anchor = "nw")
+    calculateVarianceButton.config(state = "disabled")
 
 master = tk.Tk()
 
@@ -148,6 +154,13 @@ tk.Button(measureOfDispersionsFrame, text = "1. Variance", command = lambda:rais
 
 tk.Label(varianceFrame, text = "Variance", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
+tk.Label(varianceFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+
+enterVarianceArrayToCompute = tk.Entry(varianceFrame, font = 14, width = 50)
+enterVarianceArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
+
+calculateVarianceButton = tk.Button(varianceFrame, text = "Calculate Variance", command = lambda:generateVariance())
+calculateVarianceButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
 # Standard Deviation
 
