@@ -1,5 +1,5 @@
 import tkinter as tk
-from STIPModels.MeasureOfCentralTendencies import Mean
+from STIPModels.MeasureOfCentralTendencies import Mean, Median
 
 def raiseFrame(frame) :
     frame.tkraise()
@@ -7,6 +7,10 @@ def raiseFrame(frame) :
 def generateMean() :
     output = "Mean   :   " + str(Mean.Mean().calculateMean([int(i) for i in enterArrayToCompute.get().split(', ')]))
     tk.Label(meanFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 73, pady = 130, side = tk.TOP, anchor = "nw")
+
+def generateMedian() :
+    output = "Median   :   " + str(Median.Median().calculateMedian([int(i) for i in enterArrayToCompute.get().split(', ')]))
+    tk.Label(medianFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 73, pady = 130, side = tk.TOP, anchor = "nw")
 
 master = tk.Tk()
 
@@ -91,6 +95,12 @@ tk.Button(measureOfCentralTendenciesFrame, text = "2. Median", command = lambda:
 
 tk.Label(medianFrame, text = "Median", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
+tk.Label(medianFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+
+enterArrayToCompute = tk.Entry(medianFrame, font = 14, width = 50)
+enterArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
+
+tk.Button(medianFrame, text = "Calculate Median", command = lambda:generateMedian()).pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
 # Mode
 
