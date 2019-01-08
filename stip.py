@@ -1,16 +1,24 @@
 import tkinter as tk
-from STIPModels.MeasureOfCentralTendencies import Mean, Median
+from STIPModels.MeasureOfCentralTendencies import Mean, Median, Mode
 
 def raiseFrame(frame) :
     frame.tkraise()
 
 def generateMean() :
-    output = "Mean   :   " + str(Mean.Mean().calculateMean([int(i) for i in enterArrayToCompute.get().split(', ')]))
+    output = "Mean   :   " + str(Mean.Mean().calculateMean([int(i) for i in enterMeanArrayToCompute.get().split(', ')]))
     tk.Label(meanFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 73, pady = 130, side = tk.TOP, anchor = "nw")
 
 def generateMedian() :
-    output = "Median   :   " + str(Median.Median().calculateMedian([int(i) for i in enterArrayToCompute.get().split(', ')]))
+    output = "Median   :   " + str(Median.Median().calculateMedian([int(i) for i in enterMedianArrayToCompute.get().split(', ')]))
     tk.Label(medianFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 73, pady = 130, side = tk.TOP, anchor = "nw")
+
+def generateMode() :
+    try :
+        output = "Mode   :   " + str(Mode.Mode().calculateMode([int(i) for i in enterModeArrayToCompute.get().split(', ')]))
+    except :
+        output = "Mode   :    Multiple Modes Found"
+
+    tk.Label(modeFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 65, pady = 130, side = tk.TOP, anchor = "nw")
 
 master = tk.Tk()
 
@@ -83,8 +91,8 @@ tk.Label(meanFrame, text = "Mean", font = ("Gill Sans MT", 40)).pack(pady = 100,
 
 tk.Label(meanFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
 
-enterArrayToCompute = tk.Entry(meanFrame, font = 14, width = 50)
-enterArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
+enterMeanArrayToCompute = tk.Entry(meanFrame, font = 14, width = 50)
+enterMeanArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
 
 tk.Button(meanFrame, text = "Calculate Mean", command = lambda:generateMean()).pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
@@ -97,8 +105,8 @@ tk.Label(medianFrame, text = "Median", font = ("Gill Sans MT", 40)).pack(pady = 
 
 tk.Label(medianFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
 
-enterArrayToCompute = tk.Entry(medianFrame, font = 14, width = 50)
-enterArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
+enterMedianArrayToCompute = tk.Entry(medianFrame, font = 14, width = 50)
+enterMedianArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
 
 tk.Button(medianFrame, text = "Calculate Median", command = lambda:generateMedian()).pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
@@ -108,6 +116,13 @@ tk.Button(measureOfCentralTendenciesFrame, text = "3. Mode", command = lambda:ra
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
 tk.Label(modeFrame, text = "Mode", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
+
+tk.Label(modeFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+
+enterModeArrayToCompute = tk.Entry(modeFrame, font = 14, width = 50)
+enterModeArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
+
+tk.Button(modeFrame, text = "Calculate Mode", command = lambda:generateMode()).pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
 
 
