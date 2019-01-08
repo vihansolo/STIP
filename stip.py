@@ -1,6 +1,6 @@
 import tkinter as tk
 from STIPModels.MeasureOfCentralTendencies import Mean, Median, Mode
-from STIPModels.MeasureOfDispersions import Variance, StandardDeviation
+from STIPModels.MeasureOfDispersions import Variance, StandardDeviation, InterquartileRange
 
 def raiseFrame(frame) :
     frame.tkraise()
@@ -33,6 +33,11 @@ def generateStandardDeviation() :
     output = "Standard Deviation   :   " + str(StandardDeviation.StandardDeviation().calculateStandardDeviation([int(i) for i in enterStandardDeviationArrayToCompute.get().split(', ')]))
     tk.Label(standardDeviationFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 30, pady = 130, side = tk.TOP, anchor = "nw")
     calculateStandardDeviationButton.config(state = "disabled")
+
+def generateInterquartileRange() :
+    output = "Interquartile Range   :   " + str(InterquartileRange.InterquartileRange().calculateInterquartileRange([int(i) for i in enterInterquartileRangeArrayToCompute.get().split(', ')]))
+    tk.Label(interquartileRangeFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 30, pady = 130, side = tk.TOP, anchor = "nw")
+    calculateInterquartileRangeButton.config(state = "disabled")
 
 master = tk.Tk()
 
@@ -188,6 +193,14 @@ tk.Button(measureOfDispersionsFrame, text = "3. Interquartile Range", command = 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
 tk.Label(interquartileRangeFrame, text = "Interquartile Range", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
+
+tk.Label(interquartileRangeFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+
+enterInterquartileRangeArrayToCompute = tk.Entry(interquartileRangeFrame, font = 14, width = 50)
+enterInterquartileRangeArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
+
+calculateInterquartileRangeButton = tk.Button(interquartileRangeFrame, text = "Calculate Interquartile Range", command = lambda:generateInterquartileRange())
+calculateInterquartileRangeButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
 
 
