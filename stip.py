@@ -7,10 +7,12 @@ def raiseFrame(frame) :
 def generateMean() :
     output = "Mean   :   " + str(Mean.Mean().calculateMean([int(i) for i in enterMeanArrayToCompute.get().split(', ')]))
     tk.Label(meanFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 73, pady = 130, side = tk.TOP, anchor = "nw")
+    calculateMeanButton.config(state = "disabled")
 
 def generateMedian() :
     output = "Median   :   " + str(Median.Median().calculateMedian([int(i) for i in enterMedianArrayToCompute.get().split(', ')]))
     tk.Label(medianFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 73, pady = 130, side = tk.TOP, anchor = "nw")
+    calculateMedianButton.config(state = "disabled")
 
 def generateMode() :
     try :
@@ -19,6 +21,7 @@ def generateMode() :
         output = "Mode   :    Multiple Modes Found"
 
     tk.Label(modeFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 65, pady = 130, side = tk.TOP, anchor = "nw")
+    calculateModeButton.config(state = "disabled")
 
 master = tk.Tk()
 
@@ -94,7 +97,8 @@ tk.Label(meanFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14
 enterMeanArrayToCompute = tk.Entry(meanFrame, font = 14, width = 50)
 enterMeanArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
 
-tk.Button(meanFrame, text = "Calculate Mean", command = lambda:generateMean()).pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
+calculateMeanButton = tk.Button(meanFrame, text = "Calculate Mean", command = lambda:generateMean())
+calculateMeanButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
 # Median
 
@@ -108,7 +112,8 @@ tk.Label(medianFrame, text = "Input Data           : ", font = ("Gill Sans MT", 
 enterMedianArrayToCompute = tk.Entry(medianFrame, font = 14, width = 50)
 enterMedianArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
 
-tk.Button(medianFrame, text = "Calculate Median", command = lambda:generateMedian()).pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
+calculateMedianButton = tk.Button(medianFrame, text = "Calculate Median", command = lambda:generateMedian())
+calculateMedianButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
 # Mode
 
@@ -122,7 +127,8 @@ tk.Label(modeFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14
 enterModeArrayToCompute = tk.Entry(modeFrame, font = 14, width = 50)
 enterModeArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
 
-tk.Button(modeFrame, text = "Calculate Mode", command = lambda:generateMode()).pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
+calculateModeButton = tk.Button(modeFrame, text = "Calculate Mode", command = lambda:generateMode())
+calculateModeButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
 
 
