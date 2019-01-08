@@ -1,6 +1,6 @@
 import tkinter as tk
 from STIPModels.MeasureOfCentralTendencies import Mean, Median, Mode
-from STIPModels.MeasureOfDispersions import Variance
+from STIPModels.MeasureOfDispersions import Variance, StandardDeviation
 
 def raiseFrame(frame) :
     frame.tkraise()
@@ -28,6 +28,11 @@ def generateVariance() :
     output = "Variance   :   " + str(Variance.Variance().calculateVariance([int(i) for i in enterVarianceArrayToCompute.get().split(', ')]))
     tk.Label(varianceFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 65, pady = 130, side = tk.TOP, anchor = "nw")
     calculateVarianceButton.config(state = "disabled")
+
+def generateStandardDeviation() :
+    output = "Standard Deviation   :   " + str(StandardDeviation.StandardDeviation().calculateStandardDeviation([int(i) for i in enterStandardDeviationArrayToCompute.get().split(', ')]))
+    tk.Label(standardDeviationFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 30, pady = 130, side = tk.TOP, anchor = "nw")
+    calculateStandardDeviationButton.config(state = "disabled")
 
 master = tk.Tk()
 
@@ -169,6 +174,13 @@ tk.Button(measureOfDispersionsFrame, text = "2. Standard Deviation", command = l
 
 tk.Label(standardDeviationFrame, text = "Standard Deviation", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
+tk.Label(standardDeviationFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+
+enterStandardDeviationArrayToCompute = tk.Entry(standardDeviationFrame, font = 14, width = 50)
+enterStandardDeviationArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
+
+calculateStandardDeviationButton = tk.Button(standardDeviationFrame, text = "Calculate Variance", command = lambda:generateStandardDeviation())
+calculateStandardDeviationButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
 # Interquartile Range
 
