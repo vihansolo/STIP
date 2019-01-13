@@ -6,18 +6,18 @@ def raiseFrame(frame) :
     frame.tkraise()
 
 def generateMean() :
-    output = "Mean   :   " + str(Mean.Mean().calculateMean([int(i) for i in enterMeanArrayToCompute.get().split(', ')]))
+    output = "Mean   :   " + str(Mean.Mean().calculateMean([int(i) for i in enterMeanArrayToCompute.get().split(',')]))
     tk.Label(meanFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 73, pady = 130, side = tk.TOP, anchor = "nw")
     calculateMeanButton.config(state = "disabled")
 
 def generateMedian() :
-    output = "Median   :   " + str(Median.Median().calculateMedian([int(i) for i in enterMedianArrayToCompute.get().split(', ')]))
+    output = "Median   :   " + str(Median.Median().calculateMedian([int(i) for i in enterMedianArrayToCompute.get().split(',')]))
     tk.Label(medianFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 73, pady = 130, side = tk.TOP, anchor = "nw")
     calculateMedianButton.config(state = "disabled")
 
 def generateMode() :
     try :
-        output = "Mode   :   " + str(Mode.Mode().calculateMode([int(i) for i in enterModeArrayToCompute.get().split(', ')]))
+        output = "Mode   :   " + str(Mode.Mode().calculateMode([int(i) for i in enterModeArrayToCompute.get().split(',')]))
     except :
         output = "Mode   :    Multiple Modes Found"
 
@@ -25,17 +25,17 @@ def generateMode() :
     calculateModeButton.config(state = "disabled")
 
 def generateVariance() :
-    output = "Variance   :   " + str(Variance.Variance().calculateVariance([int(i) for i in enterVarianceArrayToCompute.get().split(', ')]))
+    output = "Variance   :   " + str(Variance.Variance().calculateVariance([int(i) for i in enterVarianceArrayToCompute.get().split(',')]))
     tk.Label(varianceFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 65, pady = 130, side = tk.TOP, anchor = "nw")
     calculateVarianceButton.config(state = "disabled")
 
 def generateStandardDeviation() :
-    output = "Standard Deviation   :   " + str(StandardDeviation.StandardDeviation().calculateStandardDeviation([int(i) for i in enterStandardDeviationArrayToCompute.get().split(', ')]))
+    output = "Standard Deviation   :   " + str(StandardDeviation.StandardDeviation().calculateStandardDeviation([int(i) for i in enterStandardDeviationArrayToCompute.get().split(',')]))
     tk.Label(standardDeviationFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 30, pady = 130, side = tk.TOP, anchor = "nw")
     calculateStandardDeviationButton.config(state = "disabled")
 
 def generateInterquartileRange() :
-    output = "Interquartile Range   :   " + str(InterquartileRange.InterquartileRange().calculateInterquartileRange([int(i) for i in enterInterquartileRangeArrayToCompute.get().split(', ')]))
+    output = "Interquartile Range   :   " + str(InterquartileRange.InterquartileRange().calculateInterquartileRange([int(i) for i in enterInterquartileRangeArrayToCompute.get().split(',')]))
     tk.Label(interquartileRangeFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 30, pady = 130, side = tk.TOP, anchor = "nw")
     calculateInterquartileRangeButton.config(state = "disabled")
 
@@ -45,7 +45,7 @@ master.title("STIP")
 master.geometry("1920x1080")
 master.state('zoomed')
 
-StartFrame = tk.Frame(master)
+startFrame = tk.Frame(master)
 
 # Measure Of Central Tendencies
 
@@ -80,7 +80,7 @@ anovaFrame = tk.Frame(master)
 chiSquaredTestFrame = tk.Frame(master)
 pearsonCoeffFrame = tk.Frame(master)
 
-for frame in (StartFrame,
+for frame in (startFrame,
                 measureOfCentralTendenciesFrame, meanFrame, medianFrame, modeFrame, 
                 measureOfDispersionsFrame, varianceFrame, standardDeviationFrame, interquartileRangeFrame, 
                 regressionAnalysisFrame, linearRegressionFrame, nonLinearRegressionFrame, 
@@ -88,18 +88,18 @@ for frame in (StartFrame,
                 hypothesisAnalysisFrame, studentTTestFrame, pairedTTestFrame, anovaFrame, chiSquaredTestFrame, pearsonCoeffFrame) :
     frame.grid(row = 0, column = 0, sticky = "nsew", padx = 350)
 
-tk.Label(StartFrame, text = "Statistical Techniques Using Python", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
+tk.Label(startFrame, text = "Statistical Techniques Using Python", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
 
 # Measure Of Central Tendencies
 
-tk.Button(StartFrame, text = "1. Measure Of Central Tendencies", command = lambda:raiseFrame(measureOfCentralTendenciesFrame), 
+tk.Button(startFrame, text = "1. Measure Of Central Tendencies", command = lambda:raiseFrame(measureOfCentralTendenciesFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
 tk.Label(measureOfCentralTendenciesFrame, text = "Measure Of Central Tendencies", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
-tk.Button(measureOfCentralTendenciesFrame, text = "<---", command = lambda:raiseFrame(StartFrame)).pack(side = tk.BOTTOM)
+tk.Button(measureOfCentralTendenciesFrame, text = "<---", command = lambda:raiseFrame(startFrame)).pack(side = tk.BOTTOM)
 
 # Mean
 
@@ -150,12 +150,12 @@ calculateModeButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
 # Measure Of Dispersions
 
-tk.Button(StartFrame, text = "2. Measure Of Dispersions", command = lambda:raiseFrame(measureOfDispersionsFrame), 
+tk.Button(startFrame, text = "2. Measure Of Dispersions", command = lambda:raiseFrame(measureOfDispersionsFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
 tk.Label(measureOfDispersionsFrame, text = "Measure Of Dispersions", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
-tk.Button(measureOfDispersionsFrame, text = "<---", command = lambda:raiseFrame(StartFrame)).pack(side = tk.BOTTOM)
+tk.Button(measureOfDispersionsFrame, text = "<---", command = lambda:raiseFrame(startFrame)).pack(side = tk.BOTTOM)
 
 # Variance
 
@@ -206,12 +206,12 @@ calculateInterquartileRangeButton.pack(padx = 115, pady = 25, side = tk.TOP, anc
 
 # Regression Analysis
 
-tk.Button(StartFrame, text = "3. Regression Analysis", command = lambda:raiseFrame(regressionAnalysisFrame), 
+tk.Button(startFrame, text = "3. Regression Analysis", command = lambda:raiseFrame(regressionAnalysisFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
 tk.Label(regressionAnalysisFrame, text = "Regression Analysis", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
-tk.Button(regressionAnalysisFrame, text = "<---", command = lambda:raiseFrame(StartFrame)).pack(side = tk.BOTTOM)
+tk.Button(regressionAnalysisFrame, text = "<---", command = lambda:raiseFrame(startFrame)).pack(side = tk.BOTTOM)
 
 # Linear Regression
 
@@ -231,7 +231,7 @@ tk.Label(nonLinearRegressionFrame, text = "Non-Linear Regression", font = ("Gill
 
 # Forecasting
 
-tk.Button(StartFrame, text = "4. Forecasting", command = lambda:raiseFrame(forecastingFrame), 
+tk.Button(startFrame, text = "4. Forecasting", command = lambda:raiseFrame(forecastingFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
 tk.Label(forecastingFrame, text = "Forecasting", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
@@ -240,12 +240,12 @@ tk.Label(forecastingFrame, text = "Forecasting", font = ("Gill Sans MT", 40)).pa
 
 # Hypothesis Analysis
 
-tk.Button(StartFrame, text = "5. Hypothesis Analysis", command = lambda:raiseFrame(hypothesisAnalysisFrame), 
+tk.Button(startFrame, text = "5. Hypothesis Analysis", command = lambda:raiseFrame(hypothesisAnalysisFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
 tk.Label(hypothesisAnalysisFrame, text = "Hypothesis Analysis", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
-tk.Button(hypothesisAnalysisFrame, text = "<---", command = lambda:raiseFrame(StartFrame)).pack(side = tk.BOTTOM)
+tk.Button(hypothesisAnalysisFrame, text = "<---", command = lambda:raiseFrame(startFrame)).pack(side = tk.BOTTOM)
 
 # Student T-Test
 
@@ -287,5 +287,5 @@ tk.Button(hypothesisAnalysisFrame, text = "5. Pearson\'s Correlation Coefficient
 tk.Label(pearsonCoeffFrame, text = "Person\'s Correlation Coefficient", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
 
-raiseFrame(StartFrame)
+raiseFrame(startFrame)
 master.mainloop()
