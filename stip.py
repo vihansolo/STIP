@@ -25,18 +25,18 @@ def generateMode() :
     calculateModeButton.config(state = "disabled")
 
 def generateVariance() :
-    output = "Variance   :   " + str(Variance.Variance().calculateVariance([int(i) for i in enterVarianceArrayToCompute.get().split(',')]))
+    output = "Variance   :   " + str(float("%.4f" % Variance.Variance().calculateVariance([int(i) for i in enterVarianceArrayToCompute.get().split(',')])))
     tk.Label(varianceFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 65, pady = 130, side = tk.TOP, anchor = "nw")
     calculateVarianceButton.config(state = "disabled")
 
 def generateStandardDeviation() :
-    output = "Standard Deviation   :   " + str(StandardDeviation.StandardDeviation().calculateStandardDeviation([int(i) for i in enterStandardDeviationArrayToCompute.get().split(',')]))
-    tk.Label(standardDeviationFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 30, pady = 130, side = tk.TOP, anchor = "nw")
+    output = "Standard Deviation   :   " + str(float("%.4f" % StandardDeviation.StandardDeviation().calculateStandardDeviation([int(i) for i in enterStandardDeviationArrayToCompute.get().split(',')])))
+    tk.Label(standardDeviationFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "w")
     calculateStandardDeviationButton.config(state = "disabled")
 
 def generateInterquartileRange() :
-    output = "Interquartile Range   :   " + str(InterquartileRange.InterquartileRange().calculateInterquartileRange([int(i) for i in enterInterquartileRangeArrayToCompute.get().split(',')]))
-    tk.Label(interquartileRangeFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 30, pady = 130, side = tk.TOP, anchor = "nw")
+    output = "Interquartile Range   :   " + str(float("%.4f" % InterquartileRange.InterquartileRange().calculateInterquartileRange([int(i) for i in enterInterquartileRangeArrayToCompute.get().split(',')])))
+    tk.Label(interquartileRangeFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "nw")
     calculateInterquartileRangeButton.config(state = "disabled")
 
 master = tk.Tk()
@@ -164,7 +164,7 @@ tk.Button(measureOfDispersionsFrame, text = "1. Variance", command = lambda:rais
 
 tk.Label(varianceFrame, text = "Variance", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
-tk.Label(varianceFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+tk.Label(varianceFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 30, pady = 15, side = tk.LEFT, anchor = "nw")
 
 enterVarianceArrayToCompute = tk.Entry(varianceFrame, font = 14, width = 50)
 enterVarianceArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
@@ -184,8 +184,8 @@ tk.Label(standardDeviationFrame, text = "Input Data           : ", font = ("Gill
 enterStandardDeviationArrayToCompute = tk.Entry(standardDeviationFrame, font = 14, width = 50)
 enterStandardDeviationArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw")
 
-calculateStandardDeviationButton = tk.Button(standardDeviationFrame, text = "Calculate Variance", command = lambda:generateStandardDeviation())
-calculateStandardDeviationButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
+calculateStandardDeviationButton = tk.Button(standardDeviationFrame, text = "Calculate Standard Deviation", command = lambda:generateStandardDeviation())
+calculateStandardDeviationButton.pack(padx = 85, pady = 30, side = tk.TOP, anchor = "nw")
 
 # Interquartile Range
 
