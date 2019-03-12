@@ -1,6 +1,7 @@
 import tkinter as tk
 from STIPModels.MeasureOfCentralTendencies import Mean, Median, Mode
 from STIPModels.MeasureOfDispersions import Variance, StandardDeviation, InterquartileRange
+from STIPModels.RegressionAnalysis import LinearRegression
 
 def raiseFrame(frame) :
     frame.tkraise()
@@ -38,6 +39,11 @@ def generateInterquartileRange() :
     output = "Interquartile Range   :   " + str(float("%.4f" % InterquartileRange.InterquartileRange().calculateInterquartileRange([int(i) for i in enterInterquartileRangeArrayToCompute.get().split(',')])))
     tk.Label(interquartileRangeFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "nw")
     calculateInterquartileRangeButton.config(state = "disabled")
+
+def generateLinearRegression() :
+    output = "Probable Point   :   (8, " + str(float("%.4f" % LinearRegression.LinearRegression().calculateLinearRegression([[int(i) for i in x.split(',')] for x in enterLinearRegressionArrayToCompute.get().split(';')]))) + ")"
+    tk.Label(linearRegressionFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "nw")
+    calculateLinearRegressionButton.config(state = "disabled")
 
 master = tk.Tk()
 
@@ -220,6 +226,13 @@ tk.Button(regressionAnalysisFrame, text = "1. Linear Regression", command = lamb
 
 tk.Label(linearRegressionFrame, text = "Linear Regression", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
+tk.Label(linearRegressionFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+
+enterLinearRegressionArrayToCompute = tk.Entry(linearRegressionFrame, font = 14, width = 50)
+enterLinearRegressionArrayToCompute.pack(padx = 10, pady = 19, side = tk.TOP, anchor = "nw")
+
+calculateLinearRegressionButton = tk.Button(linearRegressionFrame, text = "Calculate Linear Regression", command = lambda:generateLinearRegression())
+calculateLinearRegressionButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
 # Non-Linear Regression
 
