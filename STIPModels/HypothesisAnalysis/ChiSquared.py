@@ -9,7 +9,4 @@ class ChiSquared() :
 
         stat, p, dof, expected = chi2_contingency(chiData)
 
-        print('Stat :',stat)
-        print('P :',p)
-        print('Degree Of Freedom :',dof)
-        print('Expected :', expected)
+        return stat, p, dof, expected

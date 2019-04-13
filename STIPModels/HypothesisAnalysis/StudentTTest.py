@@ -12,5 +12,4 @@ class StudentTTest() :
 
         stat, p = ttest_ind(x, y)
 
-        print('Stat :',stat)
-        print('P :',p)
+        return stat, p

@@ -1,10 +1,18 @@
 import tkinter as tk
+import numpy as np
 from STIPModels.MeasureOfCentralTendencies import Mean, Median, Mode
 from STIPModels.MeasureOfDispersions import Variance, StandardDeviation, InterquartileRange
-from STIPModels.RegressionAnalysis import LinearRegression
+from STIPModels.RegressionAnalysis import LinearRegression, NonLinearRegression
+from STIPModels.HypothesisAnalysis import StudentTTest, PairedTTest, Anova, ChiSquared, PearsonCoeff
+from STIPModels.Forecasting import Forecasting
+
 
 def raiseFrame(frame) :
     frame.tkraise()
+
+
+# Measure Of Central Tendencies
+
 
 def generateMean() :
     output = "Mean   :   " + str(Mean.Mean().calculateMean([int(i) for i in enterMeanArrayToCompute.get().split(',')]))
@@ -25,6 +33,10 @@ def generateMode() :
     tk.Label(modeFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 65, pady = 130, side = tk.TOP, anchor = "nw")
     calculateModeButton.config(state = "disabled")
 
+
+# Measure Of Dispersions
+
+
 def generateVariance() :
     output = "Variance   :   " + str(float("%.4f" % Variance.Variance().calculateVariance([int(i) for i in enterVarianceArrayToCompute.get().split(',')])))
     tk.Label(varianceFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 65, pady = 130, side = tk.TOP, anchor = "nw")
@@ -40,10 +52,69 @@ def generateInterquartileRange() :
     tk.Label(interquartileRangeFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "nw")
     calculateInterquartileRangeButton.config(state = "disabled")
 
+
+# Regression Analysis
+
+
 def generateLinearRegression() :
     output = "Probable Point   :   (8, " + str(float("%.4f" % LinearRegression.LinearRegression().calculateLinearRegression([[int(i) for i in x.split(',')] for x in enterLinearRegressionArrayToCompute.get().split(';')]))) + ")"
     tk.Label(linearRegressionFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "nw")
     calculateLinearRegressionButton.config(state = "disabled")
+
+def showNonLinearRegressionGraph() :
+    NonLinearRegression.NonLinearRegression().calculateNonLinearRegression()
+
+
+# Forecasting
+
+def generateForecasting() :
+    Forecasting.Forecasting().calculateForecasting()
+
+
+# Hypothesis Analysis
+
+
+def generateStudentTTest() :
+    stat, p = StudentTTest.StudentTTest().calculateStudentTTest([[int(i) for i in x.split(',')] for x in enterStudentTTestArrayToCompute.get().split(';')])
+    stat = float("%.4f" % stat)
+    p = float("%.4f" % p)
+    output = "Stat : " + str(stat) + "\nP : " + str(p)
+    tk.Label(studentTTestFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "nw")
+    calculateStudentTTestButton.config(state = "disabled")
+
+def generatePairedTTest() :
+    stat, p = PairedTTest.PairedTTest().calculatePairedTTest([[int(i) for i in x.split(',')] for x in enterPairedTTestArrayToCompute.get().split(';')])
+    stat = float("%.4f" % stat)
+    p = float("%.4f" % p)
+    output = "Stat : " + str(stat) + "\nP : " + str(p)
+    tk.Label(pairedTTestFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "nw")
+    calculatePairedTTestButton.config(state = "disabled")
+
+def generateAnova() :
+    stat, p = Anova.Anova().calculateANOVA([[int(i) for i in x.split(',')] for x in enterAnovaArrayToCompute.get().split(';')])
+    stat = float("%.4f" % stat)
+    p = float("%.4f" % p)
+    output = "Stat : " + str(stat) + "\nP : " + str(p)
+    tk.Label(anovaFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "nw")
+    calculateAnovaButton.config(state = "disabled")
+
+def generatePearsonCoeff() :
+    corr, p = PearsonCoeff.PearsonCoeff().calculateCorrelationCoefficient([[int(i) for i in x.split(',')] for x in enterPearsonCoeffArrayToCompute.get().split(';')])
+    corr = float("%.4f" % corr)
+    p = float("%.4f" % p)
+    output = "Corr : " + str(corr) + "\nP : " + str(p)
+    tk.Label(pearsonCoeffFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "nw")
+    calculatePearsonCoeffButton.config(state = "disabled")
+
+def generateChiSquared() :
+    output = ChiSquared.ChiSquared().calculateChiSquared(np.array([enterChiSquaredArrayToCompute]))
+    stat = float("%.4f" % stat)
+    p = float("%.4f" % p)
+    dof = float("%.4f" % dof)
+    expected = float("%.4f" % expected)
+    output = "Stat : " + str(stat) + "\nP : " + str(p) + "\nDegree Of Freedom : " + str(dof) + "\nExpected : " + str(expected)
+    tk.Label(pearsonCoeffFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "nw")
+    calculateChiSquaredButton.config(state = "disabled")
 
 master = tk.Tk()
 
@@ -122,6 +193,8 @@ enterMeanArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw"
 calculateMeanButton = tk.Button(meanFrame, text = "Calculate Mean", command = lambda:generateMean())
 calculateMeanButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
+tk.Button(meanFrame, text = "<---", command = lambda:raiseFrame(measureOfCentralTendenciesFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
+
 # Median
 
 tk.Button(measureOfCentralTendenciesFrame, text = "2. Median", command = lambda:raiseFrame(medianFrame), 
@@ -137,6 +210,8 @@ enterMedianArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "n
 calculateMedianButton = tk.Button(medianFrame, text = "Calculate Median", command = lambda:generateMedian())
 calculateMedianButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
+tk.Button(medianFrame, text = "<---", command = lambda:raiseFrame(measureOfCentralTendenciesFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
+
 # Mode
 
 tk.Button(measureOfCentralTendenciesFrame, text = "3. Mode", command = lambda:raiseFrame(modeFrame), 
@@ -151,6 +226,8 @@ enterModeArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = "nw"
 
 calculateModeButton = tk.Button(modeFrame, text = "Calculate Mode", command = lambda:generateMode())
 calculateModeButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
+
+tk.Button(modeFrame, text = "<---", command = lambda:raiseFrame(measureOfCentralTendenciesFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
 
 
 
@@ -178,6 +255,8 @@ enterVarianceArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, anchor = 
 calculateVarianceButton = tk.Button(varianceFrame, text = "Calculate Variance", command = lambda:generateVariance())
 calculateVarianceButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
+tk.Button(varianceFrame, text = "<---", command = lambda:raiseFrame(measureOfDispersionsFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
+
 # Standard Deviation
 
 tk.Button(measureOfDispersionsFrame, text = "2. Standard Deviation", command = lambda:raiseFrame(standardDeviationFrame), 
@@ -193,6 +272,8 @@ enterStandardDeviationArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP, 
 calculateStandardDeviationButton = tk.Button(standardDeviationFrame, text = "Calculate Standard Deviation", command = lambda:generateStandardDeviation())
 calculateStandardDeviationButton.pack(padx = 85, pady = 30, side = tk.TOP, anchor = "nw")
 
+tk.Button(standardDeviationFrame, text = "<---", command = lambda:raiseFrame(measureOfDispersionsFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
+
 # Interquartile Range
 
 tk.Button(measureOfDispersionsFrame, text = "3. Interquartile Range", command = lambda:raiseFrame(interquartileRangeFrame), 
@@ -207,6 +288,8 @@ enterInterquartileRangeArrayToCompute.pack(pady = 19, padx = 10 , side = tk.TOP,
 
 calculateInterquartileRangeButton = tk.Button(interquartileRangeFrame, text = "Calculate Interquartile Range", command = lambda:generateInterquartileRange())
 calculateInterquartileRangeButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
+
+tk.Button(interquartileRangeFrame, text = "<---", command = lambda:raiseFrame(measureOfDispersionsFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
 
 
 
@@ -234,12 +317,20 @@ enterLinearRegressionArrayToCompute.pack(padx = 10, pady = 19, side = tk.TOP, an
 calculateLinearRegressionButton = tk.Button(linearRegressionFrame, text = "Calculate Linear Regression", command = lambda:generateLinearRegression())
 calculateLinearRegressionButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
+tk.Button(linearRegressionFrame, text = "<---", command = lambda:raiseFrame(regressionAnalysisFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
+
 # Non-Linear Regression
 
 tk.Button(regressionAnalysisFrame, text = "2. Non-Linear Regression", command = lambda:raiseFrame(nonLinearRegressionFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(nonLinearRegressionFrame, text = "Non-Linear Regression", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
+tk.Label(nonLinearRegressionFrame, text = "Non-Linear Regression (Stock price) ", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
+
+showNonLinearRegressionGraphButton = tk.Button(nonLinearRegressionFrame, text = "View Graph", command = lambda:showNonLinearRegressionGraph())
+showNonLinearRegressionGraphButton.pack(padx = 200, pady = 100, side = tk.TOP, anchor = "n")
+
+tk.Button(nonLinearRegressionFrame, text = "<---", command = lambda:raiseFrame(regressionAnalysisFrame)).pack(side = tk.BOTTOM, anchor = "s", padx = 162)
+
 
 
 # Forecasting
@@ -247,7 +338,12 @@ tk.Label(nonLinearRegressionFrame, text = "Non-Linear Regression", font = ("Gill
 tk.Button(startFrame, text = "4. Forecasting", command = lambda:raiseFrame(forecastingFrame), 
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
-tk.Label(forecastingFrame, text = "Forecasting", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
+tk.Label(forecastingFrame, text = "Forecasting (Real Estate Prices)", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
+
+showForecastingGraphButton = tk.Button(forecastingFrame, text = "View Graph", command = lambda:generateForecasting())
+showForecastingGraphButton.pack(padx = 200, pady = 100, side = tk.TOP, anchor = "n")
+
+tk.Button(forecastingFrame, text = "<---", command = lambda:raiseFrame(startFrame)).pack(side = tk.BOTTOM)
 
 
 
@@ -267,6 +363,15 @@ tk.Button(hypothesisAnalysisFrame, text = "1. Student T-Test", command = lambda:
 
 tk.Label(studentTTestFrame, text = "Student T-Test", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
+tk.Label(studentTTestFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+
+enterStudentTTestArrayToCompute = tk.Entry(studentTTestFrame, font = 14, width = 50)
+enterStudentTTestArrayToCompute.pack(padx = 10, pady = 19, side = tk.TOP, anchor = "nw")
+
+calculateStudentTTestButton = tk.Button(studentTTestFrame, text = "Calculate Student T-Test", command = lambda:generateStudentTTest())
+calculateStudentTTestButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
+
+tk.Button(studentTTestFrame, text = "<---", command = lambda:raiseFrame(hypothesisAnalysisFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
 
 # Paired T-Test
 
@@ -275,6 +380,15 @@ tk.Button(hypothesisAnalysisFrame, text = "2. Paired T-Test", command = lambda:r
 
 tk.Label(pairedTTestFrame, text = "Paired T-Test", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
+tk.Label(pairedTTestFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+
+enterPairedTTestArrayToCompute = tk.Entry(pairedTTestFrame, font = 14, width = 50)
+enterPairedTTestArrayToCompute.pack(padx = 10, pady = 19, side = tk.TOP, anchor = "nw")
+
+calculatePairedTTestButton = tk.Button(pairedTTestFrame, text = "Calculate Paired T-Test", command = lambda:generatePairedTTest())
+calculatePairedTTestButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
+
+tk.Button(pairedTTestFrame, text = "<---", command = lambda:raiseFrame(hypothesisAnalysisFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
 
 # ANOVA
 
@@ -283,6 +397,15 @@ tk.Button(hypothesisAnalysisFrame, text = "3. ANOVA", command = lambda:raiseFram
 
 tk.Label(anovaFrame, text = "ANOVA", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
+tk.Label(anovaFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+
+enterAnovaArrayToCompute = tk.Entry(anovaFrame, font = 14, width = 50)
+enterAnovaArrayToCompute.pack(padx = 10, pady = 19, side = tk.TOP, anchor = "nw")
+
+calculateAnovaButton = tk.Button(anovaFrame, text = "Calculate Anova", command = lambda:generateAnova())
+calculateAnovaButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
+
+tk.Button(anovaFrame, text = "<---", command = lambda:raiseFrame(hypothesisAnalysisFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
 
 # Chi Squared Test
 
@@ -291,6 +414,15 @@ tk.Button(hypothesisAnalysisFrame, text = "4. Chi Squared Test", command = lambd
 
 tk.Label(chiSquaredTestFrame, text = "Chi Squared Test", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
+tk.Label(chiSquaredTestFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+
+enterChiSquaredArrayToCompute = tk.Entry(chiSquaredTestFrame, font = 14, width = 50)
+enterChiSquaredArrayToCompute.pack(padx = 10, pady = 19, side = tk.TOP, anchor = "nw")
+
+calculateChiSquaredButton = tk.Button(chiSquaredTestFrame, text = "Calculate Chi-Squared Test", command = lambda:generateChiSquared())
+calculateChiSquaredButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
+
+tk.Button(chiSquaredTestFrame, text = "<---", command = lambda:raiseFrame(hypothesisAnalysisFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
 
 # Pearson's Correlation Coefficient
 
@@ -298,6 +430,16 @@ tk.Button(hypothesisAnalysisFrame, text = "5. Pearson\'s Correlation Coefficient
                                        width = 75, height = 3).pack(pady = 25, side = tk.TOP)
 
 tk.Label(pearsonCoeffFrame, text = "Person\'s Correlation Coefficient", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
+
+tk.Label(pearsonCoeffFrame, text = "Input Data           : ", font = ("Gill Sans MT", 14), anchor = "nw").pack(padx = 50, pady = 15, side = tk.LEFT, anchor = "nw")
+
+enterPearsonCoeffArrayToCompute = tk.Entry(pearsonCoeffFrame, font = 14, width = 50)
+enterPearsonCoeffArrayToCompute.pack(padx = 10, pady = 19, side = tk.TOP, anchor = "nw")
+
+calculatePearsonCoeffButton = tk.Button(pearsonCoeffFrame, text = "Calculate Person\'s Coefficient", command = lambda:generatePearsonCoeff())
+calculatePearsonCoeffButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
+
+tk.Button(pearsonCoeffFrame, text = "<---", command = lambda:raiseFrame(hypothesisAnalysisFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
 
 
 raiseFrame(startFrame)
