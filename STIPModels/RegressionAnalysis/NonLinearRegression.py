@@ -53,9 +53,8 @@ class NonLinearRegression() :
         forecast_set = clf.predict(x_lately)
 
         # print('Forecast Set :\n',forecast_set,'\n\n','Accuracy :',accuracy,'\n','Forecast Out :',forecast_out)
-        return accuracy, forecast_out
 
-        df['Forecast'] = np.nan
+        df['Regression'] = np.nan
 
         last_date = df.iloc[-1].name
         last_unix = last_date.timestamp()
@@ -69,8 +68,10 @@ class NonLinearRegression() :
             df.loc[next_date] = [np.nan for _ in range(len(df.columns) - 1)] + [i]
 
         df['Adj. Close'].plot()
-        df['Forecast'].plot()
+        df['Regression'].plot()
         plt.legend(loc = 4)
         plt.xlabel('Date')
         plt.ylabel('Price')
-        plt.show()
+        plt.show(block = False)
+
+        return accuracy, forecast_out, forecast_set

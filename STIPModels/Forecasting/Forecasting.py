@@ -29,7 +29,7 @@ class Forecasting() :
             return response
 
         df = pd.read_csv("STIPModels/Forecasting/prices.csv")
-        df=df[df.symbol=='GOOG']
+        df = df[df.symbol=='GOOG']
 
         forecast_col = 'close'
         forecast_out = 5

@@ -62,7 +62,11 @@ def generateLinearRegression() :
     calculateLinearRegressionButton.config(state = "disabled")
 
 def showNonLinearRegressionGraph() :
-    NonLinearRegression.NonLinearRegression().calculateNonLinearRegression()
+    accuracy, forecast_out, forecast_set = NonLinearRegression.NonLinearRegression().calculateNonLinearRegression()
+    output = "Accuracy : " + str(float("%.4f" % accuracy)) + "\nRegression Points : " + str(forecast_out)
+    print("\n Forecast Set : \n\n", forecast_set)
+    tk.Label(nonLinearRegressionFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 300, pady = 20, side = tk.TOP, anchor = "nw")
+    showNonLinearRegressionGraphButton.config(state = "disabled")
 
 
 # Forecasting
