@@ -32,7 +32,7 @@ class Forecasting() :
         df = df[df.symbol=='GOOG']
 
         forecast_col = 'close'
-        forecast_out = 5
+        forecast_out = 12
         test_size = 0.2
 
         X_train, X_test, Y_train, Y_test , X_lately = prepare_data(df,forecast_col,forecast_out,test_size)
@@ -44,5 +44,4 @@ class Forecasting() :
 
         forecast = learner.predict(X_lately)
 
-        print('Test Score :',score)
-        print('Forecast Set : ',forecast)
+        return score, forecast

@@ -30,7 +30,7 @@ def generateMode() :
     except :
         output = "Mode   :    Multiple Modes Found"
 
-    tk.Label(modeFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 65, pady = 130, side = tk.TOP, anchor = "nw")
+    tk.Label(modeFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 73, pady = 130, side = tk.TOP, anchor = "nw")
     calculateModeButton.config(state = "disabled")
 
 
@@ -72,7 +72,10 @@ def showNonLinearRegressionGraph() :
 # Forecasting
 
 def generateForecasting() :
-    Forecasting.Forecasting().calculateForecasting()
+    score, forecast = Forecasting.Forecasting().calculateForecasting()
+    output = "Prices for the next year \n\n " + "Forecast : " + str(np.around(forecast, 2)) + "\n\nTest Score : " + str(float("%.4f" % score))
+    tk.Label(forecastingFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 20, side = tk.TOP, anchor = "nw")
+    showForecastingButton.config(state = "disabled")
 
 
 # Hypothesis Analysis
@@ -99,7 +102,7 @@ def generateAnova() :
     stat = float("%.4f" % stat)
     p = float("%.4f" % p)
     output = "Stat : " + str(stat) + "\nP : " + str(p)
-    tk.Label(anovaFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "nw")
+    tk.Label(anovaFrame, text = output, font = ("Gill Sans MT", 20)).pack(padx = 100, pady = 130, side = tk.TOP, anchor = "nw")
     calculateAnovaButton.config(state = "disabled")
 
 def generatePearsonCoeff() :
@@ -111,7 +114,7 @@ def generatePearsonCoeff() :
     calculatePearsonCoeffButton.config(state = "disabled")
 
 def generateChiSquared() :
-    output = ChiSquared.ChiSquared().calculateChiSquared(np.array([enterChiSquaredArrayToCompute]))
+    output = ChiSquared.ChiSquared().calculateChiSquared(np.array([(enterChiSquaredArrayToCompute)]))
     stat = float("%.4f" % stat)
     p = float("%.4f" % p)
     dof = float("%.4f" % dof)
@@ -167,7 +170,7 @@ for frame in (startFrame,
                 regressionAnalysisFrame, linearRegressionFrame, nonLinearRegressionFrame, 
                 forecastingFrame, 
                 hypothesisAnalysisFrame, studentTTestFrame, pairedTTestFrame, anovaFrame, chiSquaredTestFrame, pearsonCoeffFrame) :
-    frame.grid(row = 0, column = 0, sticky = "nsew", padx = 350)
+    frame.grid(row = 0, column = 0, sticky = "nsew", padx = 335)
 
 tk.Label(startFrame, text = "Statistical Techniques Using Python", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
@@ -344,8 +347,8 @@ tk.Button(startFrame, text = "4. Forecasting", command = lambda:raiseFrame(forec
 
 tk.Label(forecastingFrame, text = "Forecasting (Real Estate Prices)", font = ("Gill Sans MT", 40)).pack(pady = 80, side = tk.TOP)
 
-showForecastingGraphButton = tk.Button(forecastingFrame, text = "View Graph", command = lambda:generateForecasting())
-showForecastingGraphButton.pack(padx = 200, pady = 100, side = tk.TOP, anchor = "n")
+showForecastingButton = tk.Button(forecastingFrame, text = "View Prediction", command = lambda:generateForecasting())
+showForecastingButton.pack(padx = 200, pady = 100, side = tk.TOP, anchor = "n")
 
 tk.Button(forecastingFrame, text = "<---", command = lambda:raiseFrame(startFrame)).pack(side = tk.BOTTOM)
 
@@ -406,7 +409,7 @@ tk.Label(anovaFrame, text = "Input Data           : ", font = ("Gill Sans MT", 1
 enterAnovaArrayToCompute = tk.Entry(anovaFrame, font = 14, width = 50)
 enterAnovaArrayToCompute.pack(padx = 10, pady = 19, side = tk.TOP, anchor = "nw")
 
-calculateAnovaButton = tk.Button(anovaFrame, text = "Calculate Anova", command = lambda:generateAnova())
+calculateAnovaButton = tk.Button(anovaFrame, text = "Calculate ANOVA", command = lambda:generateAnova())
 calculateAnovaButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
 
 tk.Button(anovaFrame, text = "<---", command = lambda:raiseFrame(hypothesisAnalysisFrame)).pack(side = tk.BOTTOM, anchor = "sw", padx = 162)
