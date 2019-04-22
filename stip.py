@@ -114,13 +114,12 @@ def generatePearsonCoeff() :
     calculatePearsonCoeffButton.config(state = "disabled")
 
 def generateChiSquared() :
-    output = ChiSquared.ChiSquared().calculateChiSquared(np.array([(enterChiSquaredArrayToCompute)]))
+    stat, p, dof, expected = ChiSquared.ChiSquared().calculateChiSquared(chiData)
     stat = float("%.4f" % stat)
     p = float("%.4f" % p)
     dof = float("%.4f" % dof)
-    expected = float("%.4f" % expected)
     output = "Stat : " + str(stat) + "\nP : " + str(p) + "\nDegree Of Freedom : " + str(dof) + "\nExpected : " + str(expected)
-    tk.Label(pearsonCoeffFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 130, side = tk.TOP, anchor = "nw")
+    tk.Label(chiSquaredTestFrame, text = output, font = ("Gill Sans MT", 20)).pack(pady = 80, side = tk.TOP, anchor = "nw")
     calculateChiSquaredButton.config(state = "disabled")
 
 master = tk.Tk()
@@ -425,6 +424,8 @@ tk.Label(chiSquaredTestFrame, text = "Input Data           : ", font = ("Gill Sa
 
 enterChiSquaredArrayToCompute = tk.Entry(chiSquaredTestFrame, font = 14, width = 50)
 enterChiSquaredArrayToCompute.pack(padx = 10, pady = 19, side = tk.TOP, anchor = "nw")
+
+chiData = np.array([[1,3,4],[2,4,5],[5,3,4],[8,5,1]])
 
 calculateChiSquaredButton = tk.Button(chiSquaredTestFrame, text = "Calculate Chi-Squared Test", command = lambda:generateChiSquared())
 calculateChiSquaredButton.pack(padx = 115, pady = 25, side = tk.TOP, anchor = "nw")
